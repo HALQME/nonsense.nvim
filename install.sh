@@ -8,4 +8,4 @@ else
 fi
 
 # make symbolic link
-  ln -s "$repo_dir/nvim" ${HOME}/.config/nvim
+ln -s "$repo_dir/nvim" ${HOME}/.config/nvim
