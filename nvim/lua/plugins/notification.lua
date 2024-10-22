@@ -17,11 +17,11 @@ return {
             },
             messages = {
                 enabled = true, -- enables the Noice messages UI
-                view = 'popup', -- default view for messages
+                view = 'mini', -- default view for messages
                 view_error = 'popup', -- view for errors
                 view_warn = 'notify', -- view for warnings
                 view_history = 'messages', -- view for :messages
-                view_search = 'notify', -- view for search count messages. Set to `false` to disable
+                view_search = 'mini', -- view for search count messages. Set to `false` to disable
             },
         },
     },
@@ -30,7 +30,18 @@ return {
         event = "VeryLazy",
         config = function()
             require("notify").setup({
-                background_color = "#000000",
+                render = "compact",
+                stages = "slide",
+                timeout = 1500,
+                background_colour = "#000000",
+                text_colour = "#ffffff",
+                icons = {
+                    ERROR = " ",
+                    WARN = " ",
+                    INFO = " ",
+                    DEBUG = " ",
+                    TRACE = "✎ ",
+                },
             })
         end,
     }
