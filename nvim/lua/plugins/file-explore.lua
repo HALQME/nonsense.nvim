@@ -79,7 +79,7 @@ return {
 'nvim-neo-tree/neo-tree.nvim',
     lazy = true,
     keys = {
-        { '<Leader>e', '<CMD>Neotree<CR>' }
+        { '<Leader>e', '<CMD>Neotree toggle<CR>' }
     },
 }
 }
