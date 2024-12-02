@@ -2,42 +2,27 @@ return {
     -- LSPの設定
     {
         'neovim/nvim-lspconfig',
-        lazy = true,
+        event = 'InsertEnter',
         config = function()
             local lspconfig = require('lspconfig')
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-            -- LSPサーバーを設定
-            lspconfig.pyright.setup{
-                capabilities = capabilities,
-            }
-            lspconfig.tsserver.setup{
-                capabilities = capabilities,
-            }
-            lspconfig.sourcekit.setup{
-                capabilities = capabilities,
-            }
+            lspconfig.lua_ls.setup({})
         end,
     },
     {
-        'prabirshrestha/vim-lsp',
-        event = {'BufReadPre', 'BufNewFile'},
-        keys = {
-          {"<leader>dh", "<CMD>LspHover<CR>"}
-        },
+        'williamboman/mason.nvim',
+        event = 'VeryLazy',
         config = function()
-            -- vim-lspの設定はVimScriptで行うことが多いですが、ここで必要な設定を行います。
-            vim.cmd([[
-                " 各言語サーバーの設定
-                let g:lsp_settings = {
-                    \ 'tsserver': {'cmd': ['typescript-language-server', '--stdio']},
-                    \ 'lua_ls': {'cmd': ['lua-language-server']}
-                \ }
-            ]])
+            require("mason").setup()
         end,
+
     },
     {
-        'mattn/vim-lsp-settings',
-        event = {'BufReadPre', 'BufNewFile'},
+        'williamboman/mason-lspconfig.nvim',
+        event = 'VeryLazy',
+        config = function()
+            require("mason-lspconfig").setup()
+            require("mason-lspconfig").setup_handlers {
+            }
+        end,
     }
 }
