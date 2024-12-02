@@ -3,8 +3,9 @@ return {
         'nvim-telescope/telescope.nvim',
         event = "VeryLazy",
         keys = {
-            {"<leader>tss", "Telescope"},
-            {'<leader>tsc', 'Telescope commands'}
+            {"<leader>tsp", "Telescope"},
+            {'<leader>tsc', 'Telescope commands'},
+            {'<leader>tsf', 'Telescope find_files'}
         }
     },
     {
