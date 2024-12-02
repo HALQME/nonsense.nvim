@@ -1,6 +1,7 @@
 return {
     'catppuccin/nvim',
     name = 'catppuccin',
+    event='VimEnter',
     priority = 1000, -- Ensure it loads early
     config = function()
         require('catppuccin').setup({
