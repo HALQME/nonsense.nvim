@@ -34,7 +34,7 @@ opt.completeopt = { 'menu', 'menuone', 'noselect' }
 opt.undofile = true
 
 -- clipboard
-opt.clipboard:append('unnamedplus')
+opt.clipboard:append('unnamedplus,unnamed')
 
 -- split windows
 opt.splitright = true
