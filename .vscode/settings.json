@@ -1,0 +1,10 @@
+{
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "[lua]": {
+        "editor.defaultFormatter": "JohnnyMorganz.stylua"
+    },
+    "editor.tabCompletion": "on",
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": false
+}

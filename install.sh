@@ -34,6 +34,14 @@ if [[ ! $answer =~ ^[Yy]$ ]]; then
   exit 0
 fi
 
+if [ -d ${HOME}/.config/nvim ]; then
+  # rename and backup
+  echo "${HOME}/.config/nvim found, renaming to ${HOME}/.config/nvim.bak"
+  mv ${HOME}/.config/nvim ${HOME}/.config/nvim.bak
+else
+  echo "${HOME}/.config/nvim not found, skipping backup"
+fi
+
 # Download the Nonsense.nvim repository
 if [ ! -d $install_dir ]; then
   echo "Downloading Nonsense.nvim to $install_dir"
@@ -44,19 +52,16 @@ if [ ! -d $install_dir ]; then
   fi
 fi
 
-if [ -d ${HOME}/.config/nvim ]; then
-  # rename and backup
-  echo "${HOME}/.config/nvim found, renaming to ${HOME}/.config/nvim.bak"
-  mv ${HOME}/.config/nvim ${HOME}/.config/nvim.bak
-else
-  echo "${HOME}/.config/nvim not found, skipping backup"
-fi
-
 # make symbolic link
 echo "Creating symbolic link to $install_dir/nvim in ${HOME}/.config/nvim"
+cd "$install_dir"
+git checkout master -q
+update_output=$(git pull 2>&1)
+latest=$(git describe --tags --abbrev=0)
+git checkout tags/$latest -q
 ln -s "$install_dir/nvim" "${HOME}/.config/nvim"
 
-if [ $? == 0 ]; then
+if [ $? -eq 0 ]; then
   echo "Complete! You can now start using Neovim with the new configuration."
 else
   echo "Failed to create symbolic link. Please check the permissions and try again."
