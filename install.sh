@@ -37,7 +37,7 @@ fi
 # Download the Nonsense.nvim repository
 if [ ! -d $install_dir ]; then
   echo "Downloading Nonsense.nvim to $install_dir"
-  git clone https://github.com/HALQME/nonsense.nvim.git "$install_dir"
+  git clone https://github.com/HALQME/nonsense.nvim.git "$install_dir" -q
   if [ $? != 0 ]; then
     echo "Failed to clone Nonsense.nvim repository. Please check your internet connection and try again."
     exit 1
@@ -58,7 +58,6 @@ ln -s "$install_dir/nvim" "${HOME}/.config/nvim"
 
 if [ $? == 0 ]; then
   echo "Complete! You can now start using Neovim with the new configuration."
-  echo "If you encounter any issues, please check the backup at ${HOME}/.config/nvim.bak"
 else
   echo "Failed to create symbolic link. Please check the permissions and try again."
 fi
