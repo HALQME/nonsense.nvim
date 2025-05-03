@@ -8,9 +8,9 @@ else
 fi
 
 # make symbolic link
-  ln -s "$repo_dir/nvim" ${HOME}/.config/nvim
+ln -s "$repo_dir/nvim" ${HOME}/.config/nvim
 
-if [ $? == 0]; then
+if [ $? == 0 ]; then
   echo "Complete!"
 else
   echo "Fail"
